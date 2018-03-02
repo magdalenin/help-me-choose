@@ -2,7 +2,6 @@
 <html lang=en>
   <head>
     <meta charset="utf-8">
-    <title>Help me choose</title>
     <title>Hjälp att välja!</title>
     <link href="./main.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet"
@@ -29,8 +28,12 @@
         $('.inputs').append('<input></input>')
       }
 
-        $('.addOption').click(add_option)
       $('.addOption').click(add_option)
+        $('.inputSection').keydown(function(e) {
+         if (e.keyCode == 13) {
+           add_option()
+         }
+     });
 
       var options = []
       var submit = function() {
