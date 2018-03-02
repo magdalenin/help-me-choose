@@ -1,32 +1,25 @@
-<! doctype html>
 <!doctype html>
 <html lang=en>
   <head>
     <meta charset="utf-8">
-    <title>Help me choose</title>
     <title>Hjälp att välja!</title>
     <link href="./main.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet"
              href="https://fonts.googleapis.com/css?family=Montserrat">
   </head>
   <body>
-    <h1>Help me choose between...</h1>
-      <img src="whale.png" width="80" height="60">
-      <div>
-        <div>
+    <img src="milk.png" width="200" height="200">
+    <h1>Vad ska jag välja?</h1>
+      <div class="inputSection">
+        <div class="inputs">
+          <input placeholder="Skriv dina alternativ här :)"></input>
     <img src="dress.png" width="40" height="50">
     <h1>Vad ska jag ha på mig?</h1>
       <div class="inputSection">
         <div class="inputs">
-          <input placeholder="Something"></input>
-          <input placeholder="Kanske en kilt?"></input>
           </div>
-        <button>Add</button>
-        <button class="addOption">Add</button>
         <button class="addOption">Lägg till</button>
       </div>
-    <button>Go!</button>
-    <button class="ready">Go!</button>
       <div class="resultSection"></div>
     <button class="ready">Klar!</button>
 
@@ -39,16 +32,23 @@
         $('.inputs').append('<input></input>')
       }
 
-        $('.addOption').click(add_option)
       $('.addOption').click(add_option)
+        $('.inputSection').keydown(function(e) {
+         if (e.keyCode == 13) {
+           add_option()
+         }
+     });
 
       var options = []
-      var submit = function() {
+
+        var submit = function() {
         $('.inputSection').hide()
         $('.resultSection').css('display', 'flex')
-
+        $('h1').text('..och vinnaren är:')
         $('input').each(function() {
+          if ($(this).val() !== '') {
             options.push($(this).val())
+          }
         })
 
         var winner = options[Math.floor(Math.random() * options.length)]
